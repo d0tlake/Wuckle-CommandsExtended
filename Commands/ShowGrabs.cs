@@ -9,7 +9,7 @@ namespace CommandsExtended.Commands;
 
 public sealed class ShowGrabs : TogglableCommandBase
 {
-    public override string[] Aliases => ["ShowGrabs", "sg"];
+    public override string[] Aliases => ["showgrabs", "sg"];
 
     public override CommandTag Tag => CommandTag.World;
 
