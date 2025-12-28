@@ -2,7 +2,7 @@
 
 namespace CommandsExtended.Behaviors;
 
-public class Raycaster : MonoBehaviour
+public sealed class Raycaster : MonoBehaviour
 {
     public void Update()
     {

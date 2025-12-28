@@ -2,7 +2,7 @@
 
 namespace CommandsExtended.Commands;
 
-public class Fov : FloatSettingCommand
+public sealed class Fov : FloatSettingCommand
 {
     public override string[] Aliases => ["fov"];
 

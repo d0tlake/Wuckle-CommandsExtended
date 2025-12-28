@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CommandsExtended.Behaviors;
 
-public class HandholdVisualizer : MonoBehaviour
+public sealed class HandholdVisualizer : MonoBehaviour
 {
     Material[] existingMaterials;
     Renderer currentRenderer;

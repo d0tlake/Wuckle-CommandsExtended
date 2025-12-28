@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace CommandsExtended.Behaviors;
 
-public class HandholdRgb : MonoBehaviour
+public sealed class HandholdRgb : MonoBehaviour
 {
     private float speed = 0.1f;
 

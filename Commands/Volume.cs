@@ -2,7 +2,7 @@
 
 namespace CommandsExtended.Commands;
 
-public class Volume : FloatSettingCommand
+public sealed class Volume : FloatSettingCommand
 {
     public override string[] Aliases => ["volume", "vol"];
 

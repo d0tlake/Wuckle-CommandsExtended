@@ -1,4 +1,5 @@
 using CommandsExtended.Behaviors;
+using CommandsExtended.Common;
 using MoreCommands.Common;
 using System;
 using UnityEngine;
@@ -12,15 +13,15 @@ public sealed class ShowGrabs : TogglableCommandBase
 
     public override CommandTag Tag => CommandTag.World;
 
-    public override string Description => "temp";
+    public override string Description => "Shows grabbable surfaces";
 
     public override bool CheatsOnly => true;
 
-
     public static Material HighlightMat;
 
-
     private GameObject animationObj;
+
+    private const string rgb = "rgb";
 
     public override Action<string[]> GetLogicCallback()
     {
@@ -28,7 +29,7 @@ public sealed class ShowGrabs : TogglableCommandBase
         {
             if (this.Enabled)
             {
-                this.SetupVisualizer();
+                this.SetupVisualizer(args);
             }
             else if (!this.Enabled)
             {
@@ -37,8 +38,10 @@ public sealed class ShowGrabs : TogglableCommandBase
         };
     }
 
-    private void SetupVisualizer()
+    private void SetupVisualizer(string[] args)
     {
+        bool enableRgb = args[0].EqualsIgnoreCase(rgb);
+
         if (HighlightMat == null)
         {
             HighlightMat = new Material(Shader.Find("Hidden/Internal-Colored"));
