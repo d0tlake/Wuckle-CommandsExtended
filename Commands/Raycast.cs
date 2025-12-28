@@ -9,8 +9,11 @@ namespace CommandsExtended.Commands;
 public sealed class Raycast : TogglableCommandBase
 {
     public override string[] Aliases => ["raycast"];
+
     public override CommandTag Tag => CommandTag.World;
-    public override string Description => "temp";
+
+    public override string Description => "For dev purposes, determines name of game object at crosshair when pressing left click";
+
     public override bool CheatsOnly => true;
 
     public override Action<string[]> GetLogicCallback()

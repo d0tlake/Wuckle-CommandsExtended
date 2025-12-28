@@ -9,11 +9,16 @@ namespace CommandsExtended.Commands;
 public sealed class ShowGrabs : TogglableCommandBase
 {
     public override string[] Aliases => ["ShowGrabs", "sg"];
+
     public override CommandTag Tag => CommandTag.World;
+
     public override string Description => "temp";
+
     public override bool CheatsOnly => true;
 
+
     public static Material HighlightMat;
+
 
     private GameObject animationObj;
 

@@ -16,7 +16,7 @@ public class Raycaster : MonoBehaviour
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
-            Plugin.Beep.LogInfo($"Hit Object: {hit.collider.gameObject.name}");
+            Plugin.Logger.LogInfo($"Hit Object: {hit.collider.gameObject.name}");
         }
     }
 }

@@ -9,8 +9,11 @@ namespace CommandsExtended.Commands;
 public sealed class Marathon : CommandBase
 {
     public override string[] Aliases => ["marathon"];
+
     public override CommandTag Tag => CommandTag.World;
+
     public override string Description => "Loads all levels in a completable manner";
+
     public override bool CheatsOnly => false;
 
     public override Action<string[]> GetLogicCallback()

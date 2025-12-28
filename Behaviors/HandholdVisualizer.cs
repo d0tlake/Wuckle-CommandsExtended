@@ -52,7 +52,7 @@ public class HandholdVisualizer : MonoBehaviour
         }
         else
         {
-            Plugin.Beep.LogInfo($"Unable to draw handhold: {handhold.name}");
+            Plugin.Logger.LogInfo($"Unable to draw handhold: {handhold.name}");
         }
     }
 

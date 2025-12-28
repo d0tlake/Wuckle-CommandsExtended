@@ -8,20 +8,20 @@ namespace CommandsExtended;
 [BepInDependency("shishyando.WK.MoreCommands", "0.11.2")]
 public class Plugin : BaseUnityPlugin
 {
-    public static ManualLogSource Beep;
+    public static new ManualLogSource Logger;
 
     public void Awake()
     {
-        Beep = Logger;
+        Logger = base.Logger;
         Registry.RegisterAll();
-        Beep.LogInfo($"{MyPluginInfo.PLUGIN_GUID} is loaded");
+        Logger.LogInfo($"{MyPluginInfo.PLUGIN_GUID} is loaded");
     }
 
     public static void Assert(bool condition)
     {
         if (!condition)
         {
-            Beep.LogFatal($"Assert failed");
+            Logger.LogFatal($"Assert failed");
             throw new Exception($"[CommandsExtended] Assert failed");
         }
     }
