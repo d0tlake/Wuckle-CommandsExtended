@@ -40,36 +40,35 @@ public sealed class ShowGrabs : TogglableCommandBase
 
     private void SetupVisualizer(string[] args)
     {
-        bool enableRgb = args[0].EqualsIgnoreCase(rgb);
-
-        if (HighlightMat == null)
+        bool enableRgb = false;
+        bool hasArg = args.Length > 0;
+        if (hasArg)
         {
-            HighlightMat = new Material(Shader.Find("Hidden/Internal-Colored"));
-            HighlightMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry + 1;
-            HighlightMat.color = new Color(0, 1f, 0, 1f);
-            if (!enableRgb)
-            {
-                if (ColorUtility.TryParseHtmlString(args[0], out Color color))
-                {
-                    HighlightMat.color = color;
-                }
-            }
-            // disable weird bloom that happens in rare instances
-            HighlightMat.DisableKeyword("_EMISSION");
-            // show both sides
-            HighlightMat.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
-            // fix z-fighting caused by breathing textures, also makes handholds easier to see
-            HighlightMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-            HighlightMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-            HighlightMat.SetInt("_ZWrite", 1);
-            HighlightMat.SetFloat("_ZBias", -10.0f);
+            enableRgb = args[0].EqualsIgnoreCase(rgb);
         }
+        
+        HighlightMat = new Material(Shader.Find("Hidden/Internal-Colored"));
+        HighlightMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry + 1;
+        Color color = Color.green;
+            
+        if (hasArg && !enableRgb)
+            ColorUtility.TryParseHtmlString(args[0], out color);
+
+        HighlightMat.color = color;
+        // disable weird bloom that happens in rare instances
+        HighlightMat.DisableKeyword("_EMISSION");
+        // show both sides
+        HighlightMat.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
+        // fix z-fighting caused by breathing textures, also makes handholds easier to see
+        HighlightMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
+        HighlightMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
+        HighlightMat.SetInt("_ZWrite", 1);
+        HighlightMat.SetFloat("_ZBias", -10.0f);
 
         if (animationObj == null && enableRgb)
         {
             this.animationObj = new GameObject("ShowGrabsbleAnimation");
             this.animationObj.AddComponent<HandholdRgb>();
-            Object.DontDestroyOnLoad(this.animationObj);
         }
 
         CL_Handhold[] allHandholds = Resources.FindObjectsOfTypeAll<CL_Handhold>();

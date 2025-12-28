@@ -37,11 +37,11 @@ public abstract class FloatSettingCommand : CommandBase
 
             if (valid)
             {
-                if (val < 60)
+                if (val < Min)
                 {
                     CommandConsoleAccessor.EchoToConsole($"{SettingName} cannot be below {Min:F1}");
                 }
-                else if (val > 140)
+                else if (val > Max)
                 {
                     CommandConsoleAccessor.EchoToConsole($"{SettingName} cannot be above {Max:F1}");
                 }
