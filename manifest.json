@@ -1,7 +1,7 @@
 {
 "name": "CommandsExtended",
-"version_number": "0.1.0",
+"version_number": "0.1.1",
 "website_url": "https://github.com/d0tlake/Wuckle-CommandsExtended",
-"description": "Just some extra commands I made.",
-"dependencies": ["BepInEx-BepInExPack-5.4.2100"]
+"description": "An extension to MoreCommands",
+"dependencies": ["BepInEx-BepInExPack-5.4.2100","shishyando-MoreCommands-0.11.2"]
 }

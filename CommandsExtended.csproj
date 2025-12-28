@@ -2,8 +2,8 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
-		<Version>0.1.0</Version>
-		<Description>Just some extra commands I made.</Description>
+		<Version>0.1.1</Version>
+		<Description>An extension to MoreCommands</Description>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<LangVersion>latest</LangVersion>
 		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -13,7 +13,7 @@
 		<BepInExPluginGuid>dotlake.CommandsExtended</BepInExPluginGuid>
 		<BepInExPluginName>CommandsExtended</BepInExPluginName>
 		<PluginUrl>https://github.com/d0tlake/Wuckle-CommandsExtended</PluginUrl>
-		<DependenciesJson>["BepInEx-BepInExPack-5.4.2100"]</DependenciesJson>
+		<DependenciesJson>["BepInEx-BepInExPack-5.4.2100","shishyando-MoreCommands-0.11.2"]</DependenciesJson>
 		<ManifestOutput>$(ProjectDir)manifest.json</ManifestOutput>
 		<ZipOutputPath>$(ProjectDir)CommandsExtended.zip</ZipOutputPath>
 	</PropertyGroup>
