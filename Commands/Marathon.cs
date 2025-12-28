@@ -71,7 +71,7 @@ public sealed class Marathon : CommandBase
                 levels.AddRange(levelsToAdd);
             }
 
-            CL_GameManager.gMan.LoadLevels(levels.ToArray());
+            CL_GameManager.gMan.LoadLevels([.. levels]);
         };
     }
 }
