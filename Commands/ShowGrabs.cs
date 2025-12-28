@@ -13,7 +13,7 @@ public sealed class ShowGrabs : TogglableCommandBase
 
     public override CommandTag Tag => CommandTag.World;
 
-    public override string Description => "Shows grabbable surfaces";
+    public override string Description => "Shows grabbable surfaces.\nPass color like 'red', 'green' or '#RRGGBB' as argument to set custom color, or 'rgb' for rgb mode";
 
     public override bool CheatsOnly => true;
 
@@ -46,17 +46,26 @@ public sealed class ShowGrabs : TogglableCommandBase
         {
             HighlightMat = new Material(Shader.Find("Hidden/Internal-Colored"));
             HighlightMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry + 1;
-            HighlightMat.color = new Color(0, 0.8f, 0, 0.5f); // Transparent green
-            HighlightMat.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off); // Show both sides
+            HighlightMat.color = new Color(0, 1f, 0, 1f);
+            if (!enableRgb)
+            {
+                if (ColorUtility.TryParseHtmlString(args[0], out Color color))
+                {
+                    HighlightMat.color = color;
+                }
+            }
+            // disable weird bloom that happens in rare instances
+            HighlightMat.DisableKeyword("_EMISSION");
+            // show both sides
+            HighlightMat.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
+            // fix z-fighting caused by breathing textures, also makes handholds easier to see
             HighlightMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
             HighlightMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-            HighlightMat.DisableKeyword("_EMISSION");
             HighlightMat.SetInt("_ZWrite", 1);
-            // fix z-fighting caused by breathing textures, also makes handholds easier to see
             HighlightMat.SetFloat("_ZBias", -10.0f);
         }
 
-        if (animationObj == null)
+        if (animationObj == null && enableRgb)
         {
             this.animationObj = new GameObject("ShowGrabsbleAnimation");
             this.animationObj.AddComponent<HandholdRgb>();
