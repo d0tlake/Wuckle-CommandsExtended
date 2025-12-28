@@ -30,6 +30,7 @@ public sealed class HandholdVisualizer : MonoBehaviour
 
     private void RevealHandholds(CL_Handhold handhold)
     {
+        // not all handholds are treated equal...
         if (handhold.handholdRenderer != null)
         {
             this.RevealRenderer(handhold);

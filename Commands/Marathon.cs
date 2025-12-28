@@ -54,13 +54,16 @@ public sealed class Marathon : CommandBase
             List<string> levelsToAdd = [];
             for (int i = 0; i < levelOrder.Length; i++)
             {
+                // get exact matches
                 levelsToAdd = [.. allLevels
                     .Where(x => x.EqualsIgnoreCase(levelOrder[i]))];
 
+                // if not exact match, get list of levels
                 if(!levelsToAdd.Any())
                 {
                     levelsToAdd = [.. allLevels
                         .Where(x => x.StartsWithIgnoreCase(levelOrder[i]))];
+                    // remove levels that don't have unique names for their start/end
                     levelsToAdd.RemoveAll(x => x.ContainsIgnoreCase("lobby"));
                     levelsToAdd.RemoveAll(x => x.ContainsIgnoreCase("ending"));
                 }
