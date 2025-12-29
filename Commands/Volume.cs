@@ -1,6 +1,4 @@
-﻿using BepInEx;
-using CommandsExtended.Commands.Common;
-using UnityEngine;
+﻿using CommandsExtended.Commands.Common;
 
 namespace CommandsExtended.Commands;
 
@@ -14,18 +12,13 @@ public sealed class Volume : FloatSettingCommand
 
     protected override string SettingName => "Master volume";
 
+    protected override string DisplayPrecision => "F1";
+
+    protected override bool RequiresRefresh => true;
+
     protected override float SettingValue
     {
-
-        get
-        {
-            return SettingsManager.settings.masterVolume;
-        }
-
-        set
-        {
-            SettingsManager.settings.masterVolume = value;
-            AudioListener.volume = value;
-        }
+        get => SettingsManager.settings.masterVolume;
+        set => SettingsManager.settings.masterVolume = value;
     }
 }

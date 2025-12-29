@@ -12,6 +12,10 @@ public sealed class Fov : FloatSettingCommand
 
     protected override string SettingName => "Player FOV";
 
+    protected override string DisplayPrecision => "F1";
+
+    protected override bool RequiresRefresh => false;
+
     protected override float SettingValue
     {
         get => SettingsManager.settings.playerFOV;

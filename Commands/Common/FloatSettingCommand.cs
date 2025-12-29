@@ -8,7 +8,7 @@ namespace CommandsExtended.Commands.Common;
 
 public abstract class FloatSettingCommand : CommandBase
 {
-    public override string Description => $"Change {SettingName}, saves to player's settings (min: {Min}, max: {Max})";
+    public override string Description => $"Change {this.SettingName}, saves to player's settings (min: {this.Min}, max: {this.Max})";
 
     public override CommandTag Tag => CommandTag.Player;
 
@@ -22,6 +22,9 @@ public abstract class FloatSettingCommand : CommandBase
 
     protected abstract float Max { get; }
 
+    protected abstract string DisplayPrecision { get; }
+
+    protected abstract bool RequiresRefresh { get; }
 
     public override Action<string[]> GetLogicCallback()
     {
@@ -29,7 +32,7 @@ public abstract class FloatSettingCommand : CommandBase
         {
             if (args.Length == 0)
             {
-                CommandConsoleAccessor.EchoToConsole($"Current {SettingName}: {SettingValue:F1}");
+                CommandConsoleAccessor.EchoToConsole($"Current {this.SettingName}: {this.SettingValue.ToString(DisplayPrecision)}");
                 return;
             }
 
@@ -39,23 +42,25 @@ public abstract class FloatSettingCommand : CommandBase
             {
                 if (val < Min)
                 {
-                    CommandConsoleAccessor.EchoToConsole($"{SettingName} cannot be below {Min:F1}");
+                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} cannot be below {this.Min.ToString(DisplayPrecision)}");
                 }
                 else if (val > Max)
                 {
-                    CommandConsoleAccessor.EchoToConsole($"{SettingName} cannot be above {Max:F1}");
+                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} cannot be above {this.Max.ToString(DisplayPrecision)}");
                 }
                 else
                 {
                     SettingsManager.instance.LoadSettings();
-                    SettingValue = val;
+                    this.SettingValue = val;
                     SettingsManager.instance.SaveSettings();
-                    CommandConsoleAccessor.EchoToConsole($"{SettingName} set to {val:F1}");
+                    if(this.RequiresRefresh)
+                        SettingsManager.RefreshSettings();
+                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} set to {val.ToString(this.DisplayPrecision)}");
                 }
             }
             else
             {
-                CommandConsoleAccessor.EchoToConsole($"Invalid arguments for {SettingName} command: {args.Join(delimiter: " ")}");
+                CommandConsoleAccessor.EchoToConsole($"Invalid arguments for {this.SettingName} command: {args.Join(delimiter: " ")}");
             }
         };
     }
