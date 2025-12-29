@@ -1,4 +1,4 @@
-# Version 0.2.1 (12-28-2025)
+# Version 0.1.2 (12-28-2025)
 * Added music volume command
 * Added mouse sensitivity command
 
