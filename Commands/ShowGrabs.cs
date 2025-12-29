@@ -67,7 +67,7 @@ public sealed class ShowGrabs : TogglableCommandBase
 
         if (animationObj == null && enableRgb)
         {
-            this.animationObj = new GameObject("ShowGrabsbleAnimation");
+            this.animationObj = new GameObject("ShowGrabableAnimation");
             this.animationObj.AddComponent<HandholdRgb>();
         }
 
