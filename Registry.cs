@@ -12,6 +12,8 @@ namespace CommandsExtended
             CommandRegistry.Register(new Marathon());
             CommandRegistry.Register(new Fov());
             CommandRegistry.Register(new Volume());
+            CommandRegistry.Register(new Music());
+            CommandRegistry.Register(new Sensitivity());
         }
     }
 }
