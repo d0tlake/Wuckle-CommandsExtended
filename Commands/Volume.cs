@@ -12,7 +12,7 @@ public sealed class Volume : FloatSettingCommand
 
     protected override string SettingName => "master volume";
 
-    protected override string DisplayPrecision => "F1";
+    protected override string DisplayPrecision => "F2";
 
     protected override bool RequiresRefresh => true;
 
