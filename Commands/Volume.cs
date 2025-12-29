@@ -10,7 +10,7 @@ public sealed class Volume : FloatSettingCommand
 
     protected override float Max => 1.0f;
 
-    protected override string SettingName => "Master volume";
+    protected override string SettingName => "master volume";
 
     protected override string DisplayPrecision => "F1";
 

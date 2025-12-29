@@ -10,7 +10,7 @@ public sealed class Music : FloatSettingCommand
 
     protected override float Max => 1.0f;
 
-    protected override string SettingName => "Music volume";
+    protected override string SettingName => "music volume";
 
     protected override string DisplayPrecision => "F2";
 

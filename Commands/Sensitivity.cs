@@ -10,7 +10,7 @@ public sealed class Sensitivity : FloatSettingCommand
 
     protected override float Max => 100.0f;
 
-    protected override string SettingName => "Sensitivity";
+    protected override string SettingName => "mouse sensitivity";
 
     protected override string DisplayPrecision => "F4";
 
