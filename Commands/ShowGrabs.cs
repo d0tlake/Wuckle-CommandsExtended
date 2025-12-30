@@ -67,6 +67,10 @@ public sealed class ShowGrabs : TogglableCommandBase
 
         if (animationObj == null && enableRgb)
         {
+            hasArg = args.Length > 1;
+            HandholdRgb.Speed = HandholdRgb.DefaultSpeed;
+            if (hasArg && float.TryParse(args[1], out float speed))
+                HandholdRgb.Speed = speed;
             this.animationObj = new GameObject("ShowGrabableAnimation");
             this.animationObj.AddComponent<HandholdRgb>();
         }
