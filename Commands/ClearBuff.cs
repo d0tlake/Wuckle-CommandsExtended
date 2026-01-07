@@ -3,7 +3,7 @@ using System;
 
 namespace CommandsExtended.Commands;
 
-public sealed class ClearBuff : TogglableCommandBase
+public sealed class ClearBuff : CommandBase
 {
     public override string[] Aliases => ["clearbuff", "clear"];
 
