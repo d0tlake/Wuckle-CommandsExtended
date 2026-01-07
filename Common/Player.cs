@@ -10,6 +10,7 @@
         public static void ClearPerks()
         {
             ENT_Player.playerObject?.RemoveAllPerks();
+            ENT_Player.playerObject?.AddExtraJumps(-999);
         }
     }
 }
