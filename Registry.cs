@@ -14,7 +14,9 @@ namespace CommandsExtended
             CommandRegistry.Register(new Volume());
             CommandRegistry.Register(new Music());
             CommandRegistry.Register(new Sensitivity());
-            CommandRegistry.Register(new ClearBuff());
+            CommandRegistry.Register(new ClearBuffs());
+            CommandRegistry.Register(new ClearPerks());
+            CommandRegistry.Register(new ClearAll());
         }
     }
 }

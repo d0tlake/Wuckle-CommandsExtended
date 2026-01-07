@@ -1,3 +1,10 @@
+# Version 0.2.0 (01-07-2026)
+* Added ability to change rgb speed
+* Added suite of clear commands:
+  * Clear current buffs
+  * Clear current perks
+  * Clear both 
+
 # Version 0.1.2 (12-28-2025)
 * Added music volume command
 * Added mouse sensitivity command

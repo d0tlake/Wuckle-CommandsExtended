@@ -1,15 +1,16 @@
+using CommandsExtended.Common;
 using MoreCommands.Common;
 using System;
 
 namespace CommandsExtended.Commands;
 
-public sealed class ClearBuff : CommandBase
+public sealed class ClearPerks : CommandBase
 {
-    public override string[] Aliases => ["clearbuff", "clear"];
+    public override string[] Aliases => ["clearperk"];
 
     public override CommandTag Tag => CommandTag.Player;
 
-    public override string Description => "Clear any buffs";
+    public override string Description => "Clear any current perks";
 
     public override bool CheatsOnly => true;
 
@@ -17,7 +18,7 @@ public sealed class ClearBuff : CommandBase
     {
         return args =>
         {
-            ENT_Player.playerObject?.curBuffs?.Initialize();
+            Player.ClearPerks();
         };
     }
 }
