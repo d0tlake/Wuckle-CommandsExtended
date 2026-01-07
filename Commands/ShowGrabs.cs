@@ -13,7 +13,7 @@ public sealed class ShowGrabs : TogglableCommandBase
 
     public override CommandTag Tag => CommandTag.World;
 
-    public override string Description => "Shows grabbable surfaces.\nPass color like 'red', 'green' or '#RRGGBB' as argument to set custom color, or 'rgb' for rgb mode";
+    public override string Description => "Shows grabbable surfaces\nPass color like 'red', 'green' or '#RRGGBB' as argument to set custom color, or 'rgb' for rgb mode\nPass a number after 'rgb' to set the rgb speed.";
 
     public override bool CheatsOnly => true;
 
