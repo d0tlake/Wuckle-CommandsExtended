@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>netstandard2.1</TargetFramework>
-		<Version>0.1.2</Version>
+		<Version>0.2.0</Version>
 		<Description>An extension to MoreCommands</Description>
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 		<LangVersion>latest</LangVersion>
@@ -78,7 +78,7 @@
 	</Target>
 
 	<Target Name="ThunderstorePackage" AfterTargets="Build">
-		<Exec Command='$(PythonCmd) "$(ThunderstoreScript)" --out "$(ZipOutputPath)" --readme "$(ReadmePath)" --changelog "$(ChangelogPath)" --manifest "$(ManifestOutput)" --icon "$(IconPath)" --dll "$(TargetPath)"' />
+		<Exec Command="$(PythonCmd) &quot;$(ThunderstoreScript)&quot; --out &quot;$(ZipOutputPath)&quot; --readme &quot;$(ReadmePath)&quot; --changelog &quot;$(ChangelogPath)&quot; --manifest &quot;$(ManifestOutput)&quot; --icon &quot;$(IconPath)&quot; --dll &quot;$(TargetPath)&quot;" />
 	</Target>
 
 </Project>
