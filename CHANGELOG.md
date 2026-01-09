@@ -1,3 +1,6 @@
+# Version 0.2.1 (01-09-2026)
+* Fix marathon command not containing habitation
+
 # Version 0.2.0 (01-07-2026)
 * Added ability to change rgb speed
 * Added suite of clear commands:
