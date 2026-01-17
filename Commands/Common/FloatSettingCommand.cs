@@ -53,7 +53,7 @@ public abstract class FloatSettingCommand : CommandBase
                     SettingsManager.instance.LoadSettings();
                     this.SettingValue = val;
                     SettingsManager.instance.SaveSettings();
-                    if(this.RequiresRefresh)
+                    if (this.RequiresRefresh)
                         SettingsManager.RefreshSettings();
                     CommandConsoleAccessor.EchoToConsole($"{this.SettingName} set to {val.ToString(this.DisplayPrecision)}");
                 }

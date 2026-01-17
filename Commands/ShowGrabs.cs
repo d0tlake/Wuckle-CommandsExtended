@@ -46,11 +46,11 @@ public sealed class ShowGrabs : TogglableCommandBase
         {
             enableRgb = args[0].EqualsIgnoreCase(rgb);
         }
-        
+
         HighlightMat = new Material(Shader.Find("Hidden/Internal-Colored"));
         HighlightMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry + 1;
         Color color = Color.green;
-            
+
         if (hasArg && !enableRgb)
             ColorUtility.TryParseHtmlString(args[0], out color);
 
