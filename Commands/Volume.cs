@@ -1,4 +1,5 @@
-﻿using CommandsExtended.Commands.Common;
+﻿using System;
+using CommandsExtended.Commands.Common;
 
 namespace CommandsExtended.Commands;
 
@@ -18,7 +19,7 @@ public sealed class Volume : FloatSettingCommand
 
     protected override float SettingValue
     {
-        get => SettingsManager.settings.masterVolume;
-        set => SettingsManager.settings.masterVolume = value;
+        get => Convert.ToSingle(SettingsManager.settings.masterVolume);
+        set => SettingsManager.settings.masterVolume = Convert.ToDouble(value);
     }
 }

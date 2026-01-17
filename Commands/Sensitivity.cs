@@ -1,4 +1,5 @@
-﻿using CommandsExtended.Commands.Common;
+﻿using System;
+using CommandsExtended.Commands.Common;
 
 namespace CommandsExtended.Commands;
 
@@ -18,7 +19,7 @@ public sealed class Sensitivity : FloatSettingCommand
 
     protected override float SettingValue
     {
-        get => SettingsManager.settings.mouseSensitivity;
-        set => SettingsManager.settings.mouseSensitivity = value;
+        get => Convert.ToSingle(SettingsManager.settings.mouseSensitivity);
+        set => SettingsManager.settings.mouseSensitivity = Convert.ToDouble(value);
     }
 }

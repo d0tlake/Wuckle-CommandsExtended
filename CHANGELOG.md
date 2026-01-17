@@ -1,3 +1,6 @@
+# Version 0.2.2 (01-16-2026)
+* Fix update breaking some settings commands
+
 # Version 0.2.1 (01-09-2026)
 * Fix marathon command not containing habitation
 

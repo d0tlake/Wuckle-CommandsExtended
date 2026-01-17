@@ -1,4 +1,6 @@
-﻿using CommandsExtended.Commands.Common;
+﻿using System;
+using System.ComponentModel;
+using CommandsExtended.Commands.Common;
 
 namespace CommandsExtended.Commands;
 
@@ -18,7 +20,7 @@ public sealed class Music : FloatSettingCommand
 
     protected override float SettingValue
     {
-        get => SettingsManager.settings.musicVolume;
-        set => SettingsManager.settings.musicVolume = value;
+        get => Convert.ToSingle(SettingsManager.settings.musicVolume);
+        set => SettingsManager.settings.musicVolume = Convert.ToSingle(value);
     }
 }
