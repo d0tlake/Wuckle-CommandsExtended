@@ -5,7 +5,7 @@ using BepInEx.Logging;
 namespace CommandsExtended;
 
 [BepInPlugin(MyPluginInfo.PLUGIN_GUID, MyPluginInfo.PLUGIN_NAME, MyPluginInfo.PLUGIN_VERSION)]
-[BepInDependency("shishyando.WK.MoreCommands", "0.11.2")]
+[BepInDependency("shishyando.WK.MoreCommands", "0.12.2")]
 public class Plugin : BaseUnityPlugin
 {
     public static new ManualLogSource Logger;
