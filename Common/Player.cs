@@ -1,4 +1,7 @@
-﻿namespace CommandsExtended.Common
+﻿using HarmonyLib;
+using System.Reflection;
+
+namespace CommandsExtended.Common
 {
     public static class Player
     {
@@ -10,7 +13,11 @@
         public static void ClearPerks()
         {
             ENT_Player.playerObject?.RemoveAllPerks();
-            ENT_Player.playerObject?.AddExtraJumps(-999);
+            if (ENT_Player.playerObject != null )
+            {
+                FieldInfo extraJumps = AccessTools.Field(typeof(ENT_Player), "extraJumpsRemaining");
+                extraJumps.SetValue(ENT_Player.playerObject, 0);
+            }
         }
     }
 }
