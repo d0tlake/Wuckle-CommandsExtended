@@ -1,3 +1,9 @@
+# Version 0.3.0 (04-20-2026)
+* Some updates to be in line with the Anniversary update:
+	* Bumped MoreCommands version for Anniversary update fixes
+	* Fixed clear buff command
+* Added a command that loads the playground scene
+
 # Version 0.2.2 (01-16-2026)
 * Fix update breaking some settings commands
 
