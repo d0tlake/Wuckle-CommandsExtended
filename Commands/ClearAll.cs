@@ -6,7 +6,7 @@ namespace CommandsExtended.Commands;
 
 public sealed class ClearAll : CommandBase
 {
-    public override string[] Aliases => ["clear"];
+    public override string[] Aliases => ["clearall"];
 
     public override CommandTag Tag => CommandTag.Player;
 

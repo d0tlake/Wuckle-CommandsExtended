@@ -18,7 +18,6 @@ namespace CommandsExtended
             CommandRegistry.Register(new ClearPerks());
             CommandRegistry.Register(new ClearAll());
             CommandRegistry.Register(new Playground());
-            CommandRegistry.Register(new Timer());
         }
     }
 }

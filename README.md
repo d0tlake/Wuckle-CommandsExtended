@@ -17,3 +17,4 @@ Extends existing commands from [MoreCommands](https://github.com/shishyando/WK_M
 | `music`				| Change Music Volume, saves to player's settings (min: 0.0, max: 1.0)																											| Oneshot   | `-`            |
 | `sensitivity`, `sens`	| Change mouse sensitivity, saves to player's settings (min: 0.0, max: 100.0)																									| Oneshot   | `+`            |
 | `playground`, `pg`	| Loads the playground scene																																					| Oneshot   | `-`            |
+| `timer`				| Show and hide timer (saves to config)																																			| Oneshot   | `-`            |
