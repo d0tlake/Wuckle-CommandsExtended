@@ -12,7 +12,7 @@ public abstract class FloatSettingCommand : CommandBase
 
     public override CommandTag Tag => CommandTag.Player;
 
-    public override bool CheatsOnly => false;
+    public override bool EnablesCheatsOnUse => false;
 
     protected abstract float SettingValue { get; set; }
 

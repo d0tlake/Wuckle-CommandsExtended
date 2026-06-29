@@ -14,7 +14,7 @@ public sealed class Raycast : TogglableCommandBase
 
     public override string Description => "For dev purposes, determines name of game object at crosshair when pressing left click";
 
-    public override bool CheatsOnly => true;
+    public override bool EnablesCheatsOnUse => true;
 
     public override Action<string[]> GetLogicCallback()
     {

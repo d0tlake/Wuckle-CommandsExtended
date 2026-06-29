@@ -1,3 +1,6 @@
+# Version 0.4.0 (06-28-2026)
+* Bumped MoreCommands version for Nest update fixes
+
 # Version 0.3.0 (04-20-2026)
 * Some updates to be in line with the Anniversary update:
 	* Bumped MoreCommands version for Anniversary update fixes

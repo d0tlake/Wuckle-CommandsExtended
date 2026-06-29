@@ -15,7 +15,7 @@ public sealed class Marathon : CommandBase
 
     public override string Description => "Loads all levels in a completable manner";
 
-    public override bool CheatsOnly => false;
+    public override bool EnablesCheatsOnUse => false;
 
     private static readonly string[] levelOrder =
         [

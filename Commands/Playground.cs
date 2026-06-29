@@ -12,7 +12,7 @@ public sealed class Playground : CommandBase
 
     public override string Description => "Loads the playground scene";
 
-    public override bool CheatsOnly => false;
+    public override bool EnablesCheatsOnUse => false;
 
     public override Action<string[]> GetLogicCallback()
     {

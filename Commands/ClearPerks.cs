@@ -12,7 +12,7 @@ public sealed class ClearPerks : CommandBase
 
     public override string Description => "Clear any current perks";
 
-    public override bool CheatsOnly => true;
+    public override bool EnablesCheatsOnUse => true;
 
     public override Action<string[]> GetLogicCallback()
     {
