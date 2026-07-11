@@ -1,4 +1,4 @@
-# Version 0.4.1 (06-29-2026)
+# Version 0.4.2 (06-29-2026)
 * Renamed `clear` command to `clearall` to fix conflict with base game
 
 # Version 0.4.0 (06-28-2026)

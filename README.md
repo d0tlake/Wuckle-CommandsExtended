@@ -6,7 +6,7 @@ Extends existing commands from [MoreCommands](https://github.com/shishyando/WK_M
 
 | Command               | Description                                                                                                                                                                   | Type      | Enables cheats |
 | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :-------: | :------------: |
-| `clear`               | Clear any current perks and buffs                                                                                                                                             | Oneshot   | `+`            |
+| `clearall`            | Clear any current perks and buffs                                                                                                                                             | Oneshot   | `+`            |
 | `clearbuff`           | Clear any current buffs                                                                                                                                                       | Oneshot   | `+`            |
 | `clearperk`           | Clear any current perks                                                                                                                                                       | Oneshot   | `+`            |
 | `marathon`            | Loads all levels in a completable manner                                                                                                                                      | Oneshot   | `-`            |
@@ -17,4 +17,3 @@ Extends existing commands from [MoreCommands](https://github.com/shishyando/WK_M
 | `music`				| Change Music Volume, saves to player's settings (min: 0.0, max: 1.0)																											| Oneshot   | `-`            |
 | `sensitivity`, `sens`	| Change mouse sensitivity, saves to player's settings (min: 0.0, max: 100.0)																									| Oneshot   | `+`            |
 | `playground`, `pg`	| Loads the playground scene																																					| Oneshot   | `-`            |
-| `timer`				| Show and hide timer (saves to config)																																			| Oneshot   | `-`            |
