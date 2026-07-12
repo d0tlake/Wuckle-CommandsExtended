@@ -1,11 +1,10 @@
-﻿using System;
-using CommandsExtended.Commands.Common;
+﻿using CommandsExtended.Commands.Common;
 
-namespace CommandsExtended.Commands;
+namespace CommandsExtended.Commands.CustomCrosshair;
 
 public sealed class CrosshairScale : DoubleSettingCommand
 {
-    public override string[] Aliases => ["crosshairscale", "chscale"];
+    public override string[] Aliases => ["crosshairscale", "xscale"];
 
     protected override double Min => 0;
 

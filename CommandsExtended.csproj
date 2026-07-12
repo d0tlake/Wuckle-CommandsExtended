@@ -62,6 +62,10 @@
 			<HintPath>lib\Unity.TextMeshPro.dll</HintPath>
 			<Private>false</Private>
 		</Reference>
+		<Reference Include="UnityEngine.UI">
+			<HintPath>lib\UnityEngine.UI.dll</HintPath>
+			<Private>false</Private>
+		</Reference>
 	</ItemGroup>
 
 	<Target Name="GenerateManifest" AfterTargets="Build">

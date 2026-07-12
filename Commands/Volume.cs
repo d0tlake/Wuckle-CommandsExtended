@@ -1,5 +1,4 @@
-﻿using System;
-using CommandsExtended.Commands.Common;
+﻿using CommandsExtended.Commands.Common;
 
 namespace CommandsExtended.Commands;
 

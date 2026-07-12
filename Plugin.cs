@@ -1,5 +1,6 @@
 ﻿using BepInEx;
 using BepInEx.Logging;
+using CommandsExtended.Common;
 using CommandsExtended.Patches;
 using HarmonyLib;
 using System;
@@ -40,17 +41,28 @@ public class Plugin : BaseUnityPlugin
 
     private void OnApplicationFocus(bool hasFocus)
     {
-        if (hasFocus && ResolutionPatch.OverrideEnabled != null && ResolutionPatch.OverrideEnabled.Value)
+        if (hasFocus && ResolutionPatch.Enabled != null && ResolutionPatch.Enabled.Value)
         {
-            SettingsManager.RefreshSettings();
+            if (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name != null)
+            {
+                Global.RefreshAllSettings();
+            }
         }
     }
 
     private void LoadConfig()
     {
-        ResolutionPatch.OverrideEnabled = Config.Bind("ExclusiveModeOverride", "OverrideEnabled", false, "Is exclusive fullscreen override active");
-        ResolutionPatch.CustomResActive = Config.Bind("ExclusiveModeOverride", "CustomResActive", false, "Define custom resolution");
-        ResolutionPatch.Width = Config.Bind("ExclusiveModeOverride", "Width", 1920, "Resolution width");
-        ResolutionPatch.Height = Config.Bind("ExclusiveModeOverride", "Height", 1080, "Resolution height");
+        ResolutionPatch.Enabled = Config.Bind("FullscreenExclusive", "Enabled", false, "Is exclusive fullscreen override active");
+        ResolutionPatch.CustomResActive = Config.Bind("FullscreenExclusive", "CustomResActive", false, "Define custom resolution");
+        ResolutionPatch.Width = Config.Bind("FullscreenExclusive", "Width", 1920, "Resolution width");
+        ResolutionPatch.Height = Config.Bind("FullscreenExclusive", "Height", 1080, "Resolution height");
+
+        CrosshairPatch.Enabled = Config.Bind("CustomCrosshair", "Enabled", false, "Is custom crosshair enabled");
+        CrosshairPatch.CrosshairColor = Config.Bind("CustomCrosshair", "Color", Color.green, "Crosshair color and transparency");
+        CrosshairPatch.InvertBehind = Config.Bind("CustomCrosshair", "InvertBehind", false, "Is image behind crosshair inverted");
+        CrosshairPatch.Length = Config.Bind("CustomCrosshair", "Length", 25f, "Length of crosshair lines");
+        CrosshairPatch.Thickness = Config.Bind("CustomCrosshair", "Thickness", 25f, "Thickness of crosshair lines");
+        CrosshairPatch.Gap = Config.Bind("CustomCrosshair", "Gap", 25f, "Gap distance of crosshair lines from center");
+        CrosshairPatch.DotScale = Config.Bind("CustomCrosshair", "DotScale", 25f, "Scale of the center crosshair dot");
     }
 }

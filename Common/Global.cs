@@ -1,10 +1,19 @@
-﻿namespace CommandsExtended.Common
+﻿using System;
+
+namespace CommandsExtended.Common
 {
     public static class Global
     {
-        public static void RefreshSettings()
+        public static void RefreshAllSettings()
         {
-            SettingsManager.RefreshSettings(string.Empty);
+            try
+            {
+                SettingsManager.RefreshSettings(string.Empty);
+            }
+            catch (NullReferenceException)
+            {
+                Plugin.Logger.LogInfo("Refresh settings attempt failed, most likely not initialized yet.");
+            }
         }
     }
 }

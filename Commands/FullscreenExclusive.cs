@@ -4,7 +4,6 @@ using MoreCommands.Accessors;
 using MoreCommands.Common;
 using System;
 using System.Linq;
-using UnityEngine;
 
 namespace CommandsExtended.Commands
 {
@@ -35,12 +34,12 @@ namespace CommandsExtended.Commands
                         ResolutionPatch.Height.Value = height;
                         ResolutionPatch.CustomResActive.Value = true;
 
-                        CommandConsoleAccessor.EchoToConsole(Colors.Highlighted(Aliases.First()) + " " + "Custom resolution set");
+                        ConsoleExt.EchoWithCommand(Aliases, "Custom resolution set");
                     }
 
                     ResolutionPatch.Enabled.ConfigFile.Save();
 
-                    CommandConsoleAccessor.EchoToConsole(Colors.Highlighted(Aliases.First()) + " " + "Exclusive fullscreen enabled");
+                    ConsoleExt.EchoWithCommand(Aliases, "Exclusive fullscreen enabled");
                 }
                 else if (ResolutionPatch.Enabled.Value)
                 {
@@ -49,15 +48,15 @@ namespace CommandsExtended.Commands
 
                     ResolutionPatch.Enabled.ConfigFile.Save();
 
-                    CommandConsoleAccessor.EchoToConsole(Colors.Highlighted(Aliases.First()) + " " + "Exclusive fullscreen disabled");
+                    ConsoleExt.EchoWithCommand(Aliases, "Exclusive fullscreen disabled");
                 }
                 else
                 {
-                    CommandConsoleAccessor.EchoToConsole(Colors.Highlighted(Aliases.First()) + " " + "Invalid input");
+                    ConsoleExt.EchoWithCommand(Aliases, "Invalid input");
                     return;
                 }
 
-                Global.RefreshSettings();
+                Global.RefreshAllSettings();
             };
         }
     }

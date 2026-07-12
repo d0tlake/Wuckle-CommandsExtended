@@ -31,7 +31,7 @@ public abstract class DoubleSettingCommand : CommandBase
         {
             if (args.Length == 0)
             {
-                CommandConsoleAccessor.EchoToConsole($"Current {this.SettingName}: {this.SettingValue}");
+                ConsoleExt.EchoWithCommand(Aliases, $"Current {this.SettingName}: {this.SettingValue}");
                 return;
             }
 
@@ -41,11 +41,11 @@ public abstract class DoubleSettingCommand : CommandBase
             {
                 if (val < Min)
                 {
-                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} cannot be below {this.Min}");
+                    ConsoleExt.EchoWithCommand(Aliases, $"{this.SettingName} cannot be below {this.Min}");
                 }
                 else if (val > Max)
                 {
-                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} cannot be above {this.Max}");
+                    ConsoleExt.EchoWithCommand(Aliases, $"{this.SettingName} cannot be above {this.Max}");
                 }
                 else
                 {
@@ -53,13 +53,13 @@ public abstract class DoubleSettingCommand : CommandBase
                     this.SettingValue = val;
                     SettingsManager.instance.SaveSettings();
                     if (this.RequiresRefresh)
-                        Global.RefreshSettings();
-                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} set to {val}");
+                        Global.RefreshAllSettings();
+                    ConsoleExt.EchoWithCommand(Aliases, $"{this.SettingName} set to {val}");
                 }
             }
             else
             {
-                CommandConsoleAccessor.EchoToConsole($"Invalid arguments for {this.SettingName} command: {args.Join(delimiter: " ")}");
+                ConsoleExt.EchoWithCommand(Aliases, $"Invalid arguments for {this.SettingName} command: {args.Join(delimiter: " ")}");
             }
         };
     }

@@ -116,7 +116,7 @@ public sealed class HandholdVisualizer : MonoBehaviour
     {
         GameObject visual = GameObject.CreatePrimitive(PrimitiveType.Sphere);
 
-        Object.Destroy(visual.GetComponent<SphereCollider>());
+        Destroy(visual.GetComponent<SphereCollider>());
 
         visual.transform.SetParent(sphere.transform);
         visual.transform.localPosition = sphere.center;
