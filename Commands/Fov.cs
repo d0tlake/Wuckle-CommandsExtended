@@ -1,24 +1,23 @@
 ﻿using CommandsExtended.Commands.Common;
+using System;
 
 namespace CommandsExtended.Commands;
 
-public sealed class Fov : FloatSettingCommand
+public sealed class Fov : DoubleSettingCommand
 {
     public override string[] Aliases => ["fov"];
 
-    protected override float Min => 60.0f;
+    protected override double Min => 60;
 
-    protected override float Max => 140.0f;
+    protected override double Max => 140;
 
     protected override string SettingName => "Player FOV";
 
-    protected override string DisplayPrecision => "F1";
-
     protected override bool RequiresRefresh => false;
 
-    protected override float SettingValue
+    protected override double SettingValue
     {
         get => SettingsManager.settings.playerFOV;
-        set => SettingsManager.settings.playerFOV = value;
+        set => SettingsManager.settings.playerFOV = (float)Math.Round(value, 2);
     }
 }

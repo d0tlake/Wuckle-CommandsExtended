@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using CommandsExtended.Common;
+using HarmonyLib;
 using MoreCommands.Accessors;
 using MoreCommands.Common;
 using System;
@@ -6,7 +7,7 @@ using System.Linq;
 
 namespace CommandsExtended.Commands.Common;
 
-public abstract class FloatSettingCommand : CommandBase
+public abstract class DoubleSettingCommand : CommandBase
 {
     public override string Description => $"Change {this.SettingName}, saves to player's settings (min: {this.Min}, max: {this.Max})";
 
@@ -14,15 +15,13 @@ public abstract class FloatSettingCommand : CommandBase
 
     public override bool EnablesCheatsOnUse => false;
 
-    protected abstract float SettingValue { get; set; }
+    protected abstract double SettingValue { get; set; }
 
     protected abstract string SettingName { get; }
 
-    protected abstract float Min { get; }
+    protected abstract double Min { get; }
 
-    protected abstract float Max { get; }
-
-    protected abstract string DisplayPrecision { get; }
+    protected abstract double Max { get; }
 
     protected abstract bool RequiresRefresh { get; }
 
@@ -32,21 +31,21 @@ public abstract class FloatSettingCommand : CommandBase
         {
             if (args.Length == 0)
             {
-                CommandConsoleAccessor.EchoToConsole($"Current {this.SettingName}: {this.SettingValue.ToString(DisplayPrecision)}");
+                CommandConsoleAccessor.EchoToConsole($"Current {this.SettingName}: {this.SettingValue}");
                 return;
             }
 
-            bool valid = float.TryParse(args[0], out float val);
+            bool valid = double.TryParse(args[0], out double val);
 
             if (valid)
             {
                 if (val < Min)
                 {
-                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} cannot be below {this.Min.ToString(DisplayPrecision)}");
+                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} cannot be below {this.Min}");
                 }
                 else if (val > Max)
                 {
-                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} cannot be above {this.Max.ToString(DisplayPrecision)}");
+                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} cannot be above {this.Max}");
                 }
                 else
                 {
@@ -54,8 +53,8 @@ public abstract class FloatSettingCommand : CommandBase
                     this.SettingValue = val;
                     SettingsManager.instance.SaveSettings();
                     if (this.RequiresRefresh)
-                        SettingsManager.RefreshSettings();
-                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} set to {val.ToString(this.DisplayPrecision)}");
+                        Global.RefreshSettings();
+                    CommandConsoleAccessor.EchoToConsole($"{this.SettingName} set to {val}");
                 }
             }
             else

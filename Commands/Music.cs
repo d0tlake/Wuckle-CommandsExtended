@@ -1,26 +1,22 @@
-﻿using System;
-using System.ComponentModel;
-using CommandsExtended.Commands.Common;
+﻿using CommandsExtended.Commands.Common;
 
 namespace CommandsExtended.Commands;
 
-public sealed class Music : FloatSettingCommand
+public sealed class Music : DoubleSettingCommand
 {
     public override string[] Aliases => ["music"];
 
-    protected override float Min => 0.0f;
+    protected override double Min => 0;
 
-    protected override float Max => 1.0f;
+    protected override double Max => 1;
 
     protected override string SettingName => "music volume";
 
-    protected override string DisplayPrecision => "F2";
-
     protected override bool RequiresRefresh => true;
 
-    protected override float SettingValue
+    protected override double SettingValue
     {
-        get => Convert.ToSingle(SettingsManager.settings.musicVolume);
-        set => SettingsManager.settings.musicVolume = Convert.ToSingle(value);
+        get => SettingsManager.settings.musicVolume;
+        set => SettingsManager.settings.musicVolume = value;
     }
 }

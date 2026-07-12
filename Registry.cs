@@ -1,5 +1,6 @@
 ﻿using CommandsExtended.Commands;
 using MoreCommands.Common;
+using UnityEngine;
 
 namespace CommandsExtended
 {
@@ -18,6 +19,9 @@ namespace CommandsExtended
             CommandRegistry.Register(new ClearPerks());
             CommandRegistry.Register(new ClearAll());
             CommandRegistry.Register(new Playground());
+            CommandRegistry.Register(new CrosshairScale());
+            CommandRegistry.Register(new HandScale());
+            CommandRegistry.Register(new FullscreenExclusive());
         }
     }
 }
