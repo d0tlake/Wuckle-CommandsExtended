@@ -1,3 +1,13 @@
+# Version 0.5.0 (07-12-2026)
+* Added `exclusivemode` command to toggle fullscreen exclusive mode
+  * Allows setting custom resolution for those that enjoy stretched resolutions 
+* Added new custom crosshair system, check out the grid for all the new commands
+* Added `handscale` command for scaling hand UI from console
+* Some minor fixes and updates:
+  * Fixed weird precision errors with settings commands
+  * Console now gives command context for each command
+  * Added more levels to marathon command 
+
 # Version 0.4.2 (06-29-2026)
 * Renamed `clear` command to `clearall` to fix conflict with base game
 
