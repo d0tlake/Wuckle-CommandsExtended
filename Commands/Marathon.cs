@@ -13,7 +13,7 @@ public sealed class Marathon : CommandBase
 
     public override CommandTag Tag => CommandTag.World;
 
-    public override string Description => "Loads all levels in a completable manner";
+    public override string Description => "Loads most levels in a completable manner.";
 
     public override bool EnablesCheatsOnUse => false;
 
@@ -29,6 +29,11 @@ public sealed class Marathon : CommandBase
             "m2_pipeworks_waste_",
             "m2_pipeworks_organ_",
             "campaign_interlude_pipeworks_to_habitation_01",
+            "m3_habitation_entryway_01",
+            "campaign_interlude_pipeworks_to_habitation_02",
+            "m3_habitation_entryway_01",
+            "campaign_interlude_pipeworks_to_habitation_03",
+            "m3_habitation_entryway_01",
             "m3_habitation_shaft_intro",
             "m3_habitation_shaft_to_pier",
             "m3_habitation_pier_entrance_01",
@@ -47,6 +52,9 @@ public sealed class Marathon : CommandBase
             "m4_abyss_handle_",
             "m4_abyss_garden_",
             "m4_abyss_outro_01",
+            "campaign_interlude_abyss_to_nest_01_safearea",
+            "campaign_interlude_abyss_to_nest_introclimb_01",
+            "campaign_interlude_abyss_to_nest_01_prison",
         ];
 
     public override Action<string[]> GetLogicCallback()
