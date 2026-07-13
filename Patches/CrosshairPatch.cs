@@ -91,15 +91,15 @@ namespace CommandsExtended.Patches
 
             Material baseMaterial = useInversion ? originalInvertMat : null;
 
-            Vector2 dotSizeVector = new Vector2(dotSize, dotSize);
+            Vector2 dotSizeVector = new(dotSize, dotSize);
 
-            Vector2 horizontalSize = new Vector2(len, thick);
-            Vector2 verticalSize = new Vector2(thick, len);
+            Vector2 horizontalSize = new(len, thick);
+            Vector2 verticalSize = new(thick, len);
 
-            Vector2 leftPos = new Vector2(-gapOffset - (len / 2f), 0f);
-            Vector2 rightPos = new Vector2(gapOffset + (len / 2f), 0f);
-            Vector2 topPos = new Vector2(0f, gapOffset + (len / 2f));
-            Vector2 bottomPos = new Vector2(0f, -gapOffset - (len / 2f));
+            Vector2 leftPos = new(-gapOffset - (len / 2f), 0f);
+            Vector2 rightPos = new(gapOffset + (len / 2f), 0f);
+            Vector2 topPos = new(0f, gapOffset + (len / 2f));
+            Vector2 bottomPos = new(0f, -gapOffset - (len / 2f));
 
             UpdateElement(centerDotInvert, showInversionDot, colorInvert, baseMaterial, dotSizeVector, Vector2.zero);
             UpdateElement(lineLeftInvert, showInversionLines, colorInvert, baseMaterial, horizontalSize, leftPos);
