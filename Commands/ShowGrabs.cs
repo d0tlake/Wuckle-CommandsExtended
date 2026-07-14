@@ -13,15 +13,24 @@ public sealed class ShowGrabs : TogglableCommandBase
 
     public override CommandTag Tag => CommandTag.World;
 
-    public override string Description => "Shows grabbable surfaces\nPass color like 'red', 'green' or '#RRGGBB' as argument to set custom color, or 'rgb' for rgb mode\nPass a number after 'rgb' to set the rgb speed.";
+    public override string Description =>
+        "Shows grabbable surfaces\n" +
+        "Pass color like 'red', 'green' or '#RRGGBB' as argument to set custom color, or 'rgb' for rgb mode\n" +
+        "Pass a number after 'rgb' to set the rgb speed.";
 
     public override bool EnablesCheatsOnUse => true;
 
     public static Material HighlightMat;
+    
+    private static readonly int Cull = Shader.PropertyToID("_Cull");
+    private static readonly int SrcBlend = Shader.PropertyToID("_SrcBlend");
+    private static readonly int DstBlend = Shader.PropertyToID("_DstBlend");
+    private static readonly int ZWrite = Shader.PropertyToID("_ZWrite");
+    private static readonly int ZBias = Shader.PropertyToID("_ZBias");
 
     private GameObject animationObj;
 
-    private const string rgb = "rgb";
+    private const string RGB = "rgb";
 
     public override Action<string[]> GetLogicCallback()
     {
@@ -44,11 +53,13 @@ public sealed class ShowGrabs : TogglableCommandBase
         bool hasArg = args.Length > 0;
         if (hasArg)
         {
-            enableRgb = args[0].EqualsIgnoreCase(rgb);
+            enableRgb = args[0].EqualsIgnoreCase(RGB);
         }
 
-        HighlightMat = new Material(Shader.Find("Hidden/Internal-Colored"));
-        HighlightMat.renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry + 1;
+        HighlightMat = new Material(Shader.Find("Hidden/Internal-Colored"))
+        {
+            renderQueue = (int)UnityEngine.Rendering.RenderQueue.Geometry + 1,
+        };
         Color color = Color.green;
 
         if (hasArg && !enableRgb)
@@ -58,26 +69,26 @@ public sealed class ShowGrabs : TogglableCommandBase
         // disable weird bloom that happens in rare instances
         HighlightMat.DisableKeyword("_EMISSION");
         // show both sides
-        HighlightMat.SetInt("_Cull", (int)UnityEngine.Rendering.CullMode.Off);
+        HighlightMat.SetInt(Cull, (int)UnityEngine.Rendering.CullMode.Off);
         // fix z-fighting caused by breathing textures, also makes handholds easier to see
-        HighlightMat.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.One);
-        HighlightMat.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.Zero);
-        HighlightMat.SetInt("_ZWrite", 1);
-        HighlightMat.SetFloat("_ZBias", -10.0f);
+        HighlightMat.SetInt(SrcBlend, (int)UnityEngine.Rendering.BlendMode.One);
+        HighlightMat.SetInt(DstBlend, (int)UnityEngine.Rendering.BlendMode.Zero);
+        HighlightMat.SetInt(ZWrite, 1);
+        HighlightMat.SetFloat(ZBias, -10.0f);
 
-        if (animationObj == null && enableRgb)
+        if (this.animationObj == null && enableRgb)
         {
             hasArg = args.Length > 1;
             HandholdRgb.Speed = HandholdRgb.DefaultSpeed;
             if (hasArg && float.TryParse(args[1], out float speed))
                 HandholdRgb.Speed = speed;
-            this.animationObj = new GameObject("ShowGrabableAnimation");
+            this.animationObj = new GameObject("ShowGrabbableAnimation");
             this.animationObj.AddComponent<HandholdRgb>();
         }
 
         CL_Handhold[] allHandholds = Resources.FindObjectsOfTypeAll<CL_Handhold>();
 
-        foreach (var handhold in allHandholds)
+        foreach (CL_Handhold handhold in allHandholds)
         {
             GameObject go = handhold.gameObject;
             go.AddComponent<HandholdVisualizer>();
@@ -94,16 +105,18 @@ public sealed class ShowGrabs : TogglableCommandBase
             this.animationObj = null;
         }
 
-        foreach (var handhold in allHandholds)
+        foreach (CL_Handhold handhold in allHandholds)
         {
             GameObject go = handhold.gameObject;
 
             bool hasVisualizer = go.TryGetComponent(out HandholdVisualizer visualizer);
-            if (hasVisualizer)
+            if (!hasVisualizer)
             {
-                visualizer.HideHandholds();
-                Object.Destroy(visualizer);
+                continue;
             }
+
+            visualizer.HideHandholds();
+            Object.Destroy(visualizer);
         }
 
         this.Enabled = false;
