@@ -13,7 +13,7 @@ public sealed class HandholdRgb : MonoBehaviour
     {
         if (ShowGrabs.HighlightMat != null)
         {
-            float hue = (Time.time * Speed) % 1f;
+            float hue = Time.time * Speed % 1f;
 
             Color rainbowColor = Color.HSVToRGB(hue, 1f, 1f);
             ShowGrabs.HighlightMat.SetColor("_Color", rainbowColor);

@@ -1,7 +1,6 @@
-﻿using System;
-using CommandsExtended.Common;
-using MoreCommands.Accessors;
+﻿using CommandsExtended.Common;
 using MoreCommands.Common;
+using System;
 
 namespace CommandsExtended.Commands.CustomCrosshair
 {
@@ -16,14 +15,14 @@ namespace CommandsExtended.Commands.CustomCrosshair
         {
             return args =>
             {
-                if (!CrosshairManager.IsCustomEnabled(Aliases)) return;
+                if (!CrosshairManager.IsCustomEnabled(this.Aliases)) return;
 
-                if (CrosshairManager.TryUpdateInversion(args, Aliases))
+                if (CrosshairManager.TryUpdateInversion(args, this.Aliases))
                 {
                     return;
                 }
 
-                ConsoleExt.EchoWithCommand(Aliases, "Invalid input");
+                ConsoleExt.EchoWithCommand(this.Aliases, "Invalid input");
             };
         }
     }

@@ -105,7 +105,7 @@ namespace CommandsExtended.Patches
             UpdateElement(lineLeftInvert, showInversionLines, colorInvert, baseMaterial, horizontalSize, leftPos);
             UpdateElement(lineRightInvert, showInversionLines, colorInvert, baseMaterial, horizontalSize, rightPos);
             UpdateElement(lineTopInvert, showInversionLines, colorInvert, baseMaterial, verticalSize, topPos);
-            UpdateElement(lineBottomInvert, showInversionLines, colorInvert , baseMaterial, verticalSize, bottomPos);
+            UpdateElement(lineBottomInvert, showInversionLines, colorInvert, baseMaterial, verticalSize, bottomPos);
 
             UpdateElement(centerDotOverlay, showDot, color, null, dotSizeVector, Vector2.zero);
             UpdateElement(lineLeftOverlay, showLines, color, null, horizontalSize, leftPos);

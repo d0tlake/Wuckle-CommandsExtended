@@ -13,7 +13,7 @@ namespace CommandsExtended.Common
         public static void ClearPerks()
         {
             ENT_Player.playerObject?.RemoveAllPerks();
-            if (ENT_Player.playerObject != null )
+            if (ENT_Player.playerObject != null)
             {
                 FieldInfo extraJumps = AccessTools.Field(typeof(ENT_Player), "extraJumpsRemaining");
                 extraJumps.SetValue(ENT_Player.playerObject, 0);

@@ -20,7 +20,7 @@ public sealed class Raycast : TogglableCommandBase
     {
         return args =>
         {
-            GameObject listenerObj = new GameObject("RaycastListener");
+            GameObject listenerObj = new("RaycastListener");
             if (this.Enabled)
             {
                 listenerObj.AddComponent<Raycaster>();

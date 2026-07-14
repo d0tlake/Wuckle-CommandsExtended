@@ -1,9 +1,7 @@
 ﻿using CommandsExtended.Common;
 using CommandsExtended.Patches;
-using MoreCommands.Accessors;
 using MoreCommands.Common;
 using System;
-using System.Linq;
 
 namespace CommandsExtended.Commands
 {
@@ -34,12 +32,12 @@ namespace CommandsExtended.Commands
                         ResolutionPatch.Height.Value = height;
                         ResolutionPatch.CustomResActive.Value = true;
 
-                        ConsoleExt.EchoWithCommand(Aliases, "Custom resolution set");
+                        ConsoleExt.EchoWithCommand(this.Aliases, "Custom resolution set");
                     }
 
                     ResolutionPatch.Enabled.ConfigFile.Save();
 
-                    ConsoleExt.EchoWithCommand(Aliases, "Exclusive fullscreen enabled");
+                    ConsoleExt.EchoWithCommand(this.Aliases, "Exclusive fullscreen enabled");
                 }
                 else if (ResolutionPatch.Enabled.Value)
                 {
@@ -48,11 +46,11 @@ namespace CommandsExtended.Commands
 
                     ResolutionPatch.Enabled.ConfigFile.Save();
 
-                    ConsoleExt.EchoWithCommand(Aliases, "Exclusive fullscreen disabled");
+                    ConsoleExt.EchoWithCommand(this.Aliases, "Exclusive fullscreen disabled");
                 }
                 else
                 {
-                    ConsoleExt.EchoWithCommand(Aliases, "Invalid input");
+                    ConsoleExt.EchoWithCommand(this.Aliases, "Invalid input");
                     return;
                 }
 

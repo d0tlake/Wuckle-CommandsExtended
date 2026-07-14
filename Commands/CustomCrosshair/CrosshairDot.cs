@@ -1,8 +1,7 @@
-﻿using System;
-using CommandsExtended.Common;
+﻿using CommandsExtended.Common;
 using CommandsExtended.Patches;
-using MoreCommands.Accessors;
 using MoreCommands.Common;
+using System;
 
 namespace CommandsExtended.Commands.CustomCrosshair
 {
@@ -17,14 +16,14 @@ namespace CommandsExtended.Commands.CustomCrosshair
         {
             return args =>
             {
-                if (!CrosshairManager.IsCustomEnabled(Aliases)) return;
+                if (!CrosshairManager.IsCustomEnabled(this.Aliases)) return;
 
-                if (CrosshairManager.TryUpdateSingleFloat(args, CrosshairPatch.DotScale, Aliases, "dot scale"))
+                if (CrosshairManager.TryUpdateSingleFloat(args, CrosshairPatch.DotScale, this.Aliases, "dot scale"))
                 {
                     return;
                 }
 
-                ConsoleExt.EchoWithCommand(Aliases, "Invalid input");
+                ConsoleExt.EchoWithCommand(this.Aliases, "Invalid input");
             };
         }
     }

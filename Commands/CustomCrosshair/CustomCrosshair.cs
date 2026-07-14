@@ -1,8 +1,7 @@
-﻿using System;
-using CommandsExtended.Common;
+﻿using CommandsExtended.Common;
 using CommandsExtended.Patches;
-using MoreCommands.Accessors;
 using MoreCommands.Common;
+using System;
 
 namespace CommandsExtended.Commands.CustomCrosshair
 {
@@ -25,26 +24,26 @@ namespace CommandsExtended.Commands.CustomCrosshair
 
                 if (args == null || args.Length == 0)
                 {
-                    CrosshairManager.ToggleState(Aliases);
+                    CrosshairManager.ToggleState(this.Aliases);
                     return;
                 }
                 else if (args.Length == 1)
                 {
                     if (args[0].Equals("show", StringComparison.OrdinalIgnoreCase))
                     {
-                        CrosshairManager.ShowSettings(Aliases);
+                        CrosshairManager.ShowSettings(this.Aliases);
                         return;
                     }
                 }
                 else if (args.Length == 9)
                 {
-                    if (CrosshairManager.TryUpdateFullConfig(args, Aliases))
+                    if (CrosshairManager.TryUpdateFullConfig(args, this.Aliases))
                     {
                         return;
                     }
                 }
 
-                ConsoleExt.EchoWithCommand(Aliases, "Invalid input");
+                ConsoleExt.EchoWithCommand(this.Aliases, "Invalid input");
             };
         }
     }

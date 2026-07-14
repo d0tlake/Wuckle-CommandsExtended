@@ -21,7 +21,7 @@ public sealed class ShowGrabs : TogglableCommandBase
     public override bool EnablesCheatsOnUse => true;
 
     public static Material HighlightMat;
-    
+
     private static readonly int Cull = Shader.PropertyToID("_Cull");
     private static readonly int SrcBlend = Shader.PropertyToID("_SrcBlend");
     private static readonly int DstBlend = Shader.PropertyToID("_DstBlend");

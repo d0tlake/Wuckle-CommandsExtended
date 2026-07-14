@@ -5,23 +5,23 @@ namespace CommandsExtended.Behaviors;
 
 public sealed class HandholdVisualizer : MonoBehaviour
 {
-    Material[] existingMaterials;
-    Renderer currentRenderer;
-    bool wasEnabled = false;
+    private Material[] existingMaterials;
+    private Renderer currentRenderer;
+    private bool wasEnabled = false;
 
     public void Start()
     {
-        bool hasHandhold = TryGetComponent(out CL_Handhold handhold);
+        bool hasHandhold = this.TryGetComponent(out CL_Handhold handhold);
 
         if (hasHandhold)
         {
-            RevealHandholds(handhold);
+            this.RevealHandholds(handhold);
         }
     }
 
     public void HideHandholds()
     {
-        if (currentRenderer != null)
+        if (this.currentRenderer != null)
         {
             this.currentRenderer.enabled = this.wasEnabled;
             this.currentRenderer.sharedMaterials = [.. this.existingMaterials];
@@ -125,7 +125,7 @@ public sealed class HandholdVisualizer : MonoBehaviour
         float diameter = sphere.radius * 2f;
         visual.transform.localScale = new Vector3(diameter, diameter, diameter);
 
-        var renderer = visual.GetComponent<MeshRenderer>();
+        MeshRenderer renderer = visual.GetComponent<MeshRenderer>();
         this.TrackExisting(renderer);
         renderer.sharedMaterials = [ShowGrabs.HighlightMat];
     }
@@ -141,7 +141,7 @@ public sealed class HandholdVisualizer : MonoBehaviour
         visual.transform.localScale = box.size;
         visual.transform.localRotation = Quaternion.identity;
 
-        var renderer = visual.GetComponent<Renderer>();
+        Renderer renderer = visual.GetComponent<Renderer>();
         this.TrackExisting(renderer);
         renderer.sharedMaterials = [ShowGrabs.HighlightMat];
     }

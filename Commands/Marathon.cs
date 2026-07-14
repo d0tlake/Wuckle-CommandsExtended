@@ -72,7 +72,7 @@ public sealed class Marathon : CommandBase
                     .Where(x => x.EqualsIgnoreCase(levelOrder[i]))];
 
                 // if not exact match, get list of levels
-                if(!levelsToAdd.Any())
+                if (!levelsToAdd.Any())
                 {
                     levelsToAdd = [.. allLevels
                         .Where(x => x.StartsWithIgnoreCase(levelOrder[i]))];

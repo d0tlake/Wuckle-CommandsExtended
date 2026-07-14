@@ -64,7 +64,7 @@ namespace CommandsExtended.Common
                 CrosshairPatch.Thickness.Value = thickness;
                 CrosshairPatch.Gap.Value = gap;
                 CrosshairPatch.DotScale.Value = dotScale;
-                CrosshairPatch.InvertBehind.Value = (invertVal == 1);
+                CrosshairPatch.InvertBehind.Value = invertVal == 1;
 
                 SetColorConfig(r, g, b, a);
 
@@ -142,7 +142,7 @@ namespace CommandsExtended.Common
 
             if (args.Length == 1 && int.TryParse(args[0], out int val))
             {
-                bool invertActive = (val == 1);
+                bool invertActive = val == 1;
                 CrosshairPatch.InvertBehind.Value = invertActive;
                 CrosshairPatch.Enabled.ConfigFile.Save();
 

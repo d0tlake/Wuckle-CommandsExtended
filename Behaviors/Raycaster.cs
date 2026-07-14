@@ -8,7 +8,7 @@ public sealed class Raycaster : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            DoRaycast();
+            this.DoRaycast();
         }
     }
     private void DoRaycast()

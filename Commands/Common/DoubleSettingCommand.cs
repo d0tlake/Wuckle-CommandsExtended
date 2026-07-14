@@ -1,6 +1,5 @@
 ﻿using CommandsExtended.Common;
 using HarmonyLib;
-using MoreCommands.Accessors;
 using MoreCommands.Common;
 using System;
 using System.Linq;
@@ -31,7 +30,7 @@ public abstract class DoubleSettingCommand : CommandBase
         {
             if (args.Length == 0)
             {
-                ConsoleExt.EchoWithCommand(Aliases, $"Current {this.SettingName}: {this.SettingValue}");
+                ConsoleExt.EchoWithCommand(this.Aliases, $"Current {this.SettingName}: {this.SettingValue}");
                 return;
             }
 
@@ -39,13 +38,13 @@ public abstract class DoubleSettingCommand : CommandBase
 
             if (valid)
             {
-                if (val < Min)
+                if (val < this.Min)
                 {
-                    ConsoleExt.EchoWithCommand(Aliases, $"{this.SettingName} cannot be below {this.Min}");
+                    ConsoleExt.EchoWithCommand(this.Aliases, $"{this.SettingName} cannot be below {this.Min}");
                 }
-                else if (val > Max)
+                else if (val > this.Max)
                 {
-                    ConsoleExt.EchoWithCommand(Aliases, $"{this.SettingName} cannot be above {this.Max}");
+                    ConsoleExt.EchoWithCommand(this.Aliases, $"{this.SettingName} cannot be above {this.Max}");
                 }
                 else
                 {
@@ -54,12 +53,12 @@ public abstract class DoubleSettingCommand : CommandBase
                     SettingsManager.instance.SaveSettings();
                     if (this.RequiresRefresh)
                         Global.RefreshAllSettings();
-                    ConsoleExt.EchoWithCommand(Aliases, $"{this.SettingName} set to {val}");
+                    ConsoleExt.EchoWithCommand(this.Aliases, $"{this.SettingName} set to {val}");
                 }
             }
             else
             {
-                ConsoleExt.EchoWithCommand(Aliases, $"Invalid arguments for {this.SettingName} command: {args.Join(delimiter: " ")}");
+                ConsoleExt.EchoWithCommand(this.Aliases, $"Invalid arguments for {this.SettingName} command: {args.Join(delimiter: " ")}");
             }
         };
     }
